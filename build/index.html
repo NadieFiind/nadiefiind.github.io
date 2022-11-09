@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>A PyFyre App</title>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		
+		<link rel="icon" href="/favicon.ico" />
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.7/brython.min.js" defer="defer"></script>
+		<script src="/src.brython.js" defer="defer"></script>
+		<script type="text/python">
+			import pyfyre
+			pyfyre.PRODUCTION = True
+			import index
+		</script>
+		
+		<script src="/modules.brython.js" defer="defer"></script>
+		<link rel="stylesheet" href="/style.css" />
+	</head>
+	<body onload="brython({'debug': 0, 'cache': 1})">
+		<noscript>Warning: JavaScript is not enabled.</noscript>
+		<div id="root"><div><h1 style="font-family: Sans">Welcome to PyFyre 🐍🔥</h1><p>Get started by modifying the <code>src/index.py</code>.</p><p>Learn PyFyre by reading the <a href="https://pyfyre-docs.netlify.app/">documentation</a>. It is also advisable to learn <a href="https://www.brython.info/">Brython</a> alongside PyFyre as it is built on top of Brython.</p><h2>Deployment</h2><p>Run <code>pyfyre build</code>. The build files are saved in the <code>build</code> directory so you can just serve or deploy that directory to the web.</p><h2>Links</h2><ul><li><a href="https://pypi.org/project/pyfyre">PyPI</a></li><li><a href="https://github.com/pyfyre/pyfyre">Repository</a></li><li><a href="https://pyfyre-docs.netlify.app">Documentation</a></li><li><a href="https://www.facebook.com/pyfyreframework">Facebook Page</a></li><li><a href="https://discord.gg/YzEDuqhgZJ">Discord Server</a></li></ul></div></div>
+	</body>
+</html>
