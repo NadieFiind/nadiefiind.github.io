@@ -1,29 +1,8 @@
-from pyfyre import render, Style
+from pyfyre import render
 from pyfyre.nodes import *
+from widgets import Background
 from home import Home
-
-
-class Background(Widget):
-    def __init__(self) -> None:
-        super().__init__(
-            styles=[
-                Style(
-                    width="100vw",
-                    height="100vh",
-                    position="fixed",
-                    z_index="-1000",
-                )
-            ],
-        )
-
-    def build(self) -> list[Node]:
-        return [
-            Element(
-                "img",
-                attrs={"src": "/images/space_background.jpg"},
-                styles=[Style(height="100vh", opacity="0.5")],
-            )
-        ]
+from about import About
 
 
 class HomePage(Widget):
@@ -31,4 +10,14 @@ class HomePage(Widget):
         return [Background(), Home()]
 
 
-render({"/": lambda: HomePage()})
+class AboutPage(Widget):
+    def build(self) -> list[Node]:
+        return [Background(), About()]
+
+
+render(
+    {
+        "/": lambda: HomePage(),
+        "/about": lambda: AboutPage(),
+    }
+)

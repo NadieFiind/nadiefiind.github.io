@@ -1,46 +1,28 @@
-from pyfyre import Style
+from pyfyre import Style, State
 from pyfyre.nodes import *
-from styles import mq_mobile, centerx, debug
+from widgets import Section, MainSection, SocMedLink
+from styles import mq_mobile, head_style, centerx
 
 
-class Section(Widget):
-    def __init__(self, view: Node, *, tag_name: str = "section") -> None:
-        self.view = view
-        super().__init__(
-            tag_name=tag_name,
-            styles=[
-                centerx,
-                debug,
-                Style(
-                    width="calc(100vw / 1.3)" if mq_mobile.matches else "200px",
-                    margin_bottom="40px",
-                ),
-            ],
-        )
-
+class Home(MainSection):  # type: ignore[misc]
     def build(self) -> list[Node]:
-        return [self.view]
+        show_about_link = State[bool](False)
 
-
-class Home(Widget):
-    def __init__(self) -> None:
-        super().__init__(
-            tag_name="main", states=[mq_mobile], styles=[Style(padding_top="50px")]
-        )
-
-    def build(self) -> list[Node]:
         return [
             Section(
                 Element(
                     "img",
-                    attrs={"src": "/images/avatar.png"},
+                    attrs={
+                        "src": "/images/avatar.png",
+                        "class": "glowing-circle" if not mq_mobile.matches else "",
+                    },
                     styles=[
                         Style(
                             border_radius="100%",
                             height="calc(100vw / 1.3)"
                             if mq_mobile.matches
                             else "200px",
-                        )
+                        ),
                     ],
                 )
             ),
@@ -56,7 +38,7 @@ class Home(Widget):
                         Element(
                             "h1",
                             lambda: [Text("Nadie Fiind")],
-                            styles=[Style(font_wight="bold", font_family="Open Sans")],
+                            styles=[head_style],
                         ),
                         Element(
                             "span",
@@ -68,7 +50,6 @@ class Home(Widget):
                         Style(
                             font_size="3rem",
                             white_space="nowrap",
-                            text_align="center",
                             line_height="2.5rem",
                         )
                     ],
@@ -79,31 +60,92 @@ class Home(Widget):
                 Element(
                     "div",
                     lambda: [
+                        SocMedLink(
+                            "Discord", "https://discord.com/users/459745032811839500"
+                        ),
+                        SocMedLink("GitHub", "https://github.com/NadieFiind"),
+                        SocMedLink("Twitter", "https://twitter.com/NadieFiind"),
+                        SocMedLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
+                    ],
+                    styles=[
+                        Style(
+                            display="flex",
+                            justify_content="space-between",
+                            flex_wrap="wrap",
+                        )
+                    ],
+                )
+            ),
+            Section(
+                Element(
+                    "div",
+                    lambda: [
                         Element(
                             "img",
                             attrs={
                                 "src": "https://media.tenor.com/GttGPkMEhP0AAAAC/anime-what.gif"
                             },
+                            styles=[centerx],
                         ),
                         Element(
                             "p",
                             lambda: [
-                                RouterLink(
-                                    "/about",
-                                    lambda: [Text("Do you wanna know more about me?")],
+                                Element(
+                                    "span",
+                                    lambda: [
+                                        Text(
+                                            "Do you wanna know more about me?"
+                                            if not show_about_link.value
+                                            else "That's kinda weird but ok."
+                                        )
+                                    ],
+                                    styles=[
+                                        Style(margin_bottom="10px", display="block")
+                                    ],
+                                ),
+                                Button(
+                                    lambda ev: show_about_link.set_value(True),
+                                    lambda: [Text("Yes!")],
+                                    styles=[
+                                        Style(
+                                            font_size="1.3rem",
+                                            font_family="Syne Mono",
+                                        )
+                                    ],
+                                    attrs={
+                                        "class": "glowing"
+                                        if not mq_mobile.matches
+                                        else ""
+                                    },
                                 )
+                                if not show_about_link.value
+                                else RouterLink(
+                                    "/about",
+                                    lambda: [Text("...")],
+                                    styles=[
+                                        Style(
+                                            font_size="1.3rem",
+                                            font_family="Syne Mono",
+                                        )
+                                    ],
+                                    attrs={
+                                        "class": "glowing"
+                                        if not mq_mobile.matches
+                                        else ""
+                                    },
+                                ),
                             ],
                             styles=[
                                 Style(
                                     font_family="Schoolbell",
                                     font_size="1.7rem",
-                                    text_align="center",
                                     line_height="2rem",
                                     margin="20px auto",
                                 )
                             ],
                         ),
                     ],
+                    states=[show_about_link],
                 )
             ),
         ]
