@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 from pyfyre import Style
 from pyfyre.nodes import *
 from styles import mq_mobile, centerx, debug
@@ -38,8 +38,15 @@ class MainSection(Widget):
 
 
 class Section(Widget):
-    def __init__(self, view: Node, *, tag_name: str = "section", **kwargs: Any) -> None:
-        self.view = view
+    def __init__(self, *views: Node, tag_name: str = "section", **kwargs: Any) -> None:
+        self.views = views
+
+        additional_styles = kwargs.get("styles")
+        if additional_styles is None:
+            additional_styles = []
+        else:
+            del kwargs["styles"]
+
         super().__init__(
             tag_name=tag_name,
             styles=[
@@ -50,12 +57,13 @@ class Section(Widget):
                     margin_bottom="40px",
                     text_align="center",
                 ),
-            ],
+            ]
+            + additional_styles,
             **kwargs,
         )
 
     def build(self) -> list[Node]:
-        return [self.view]
+        return [*self.views]
 
 
 class SocMedLink(Widget):
@@ -74,3 +82,44 @@ class SocMedLink(Widget):
                 attrs={"target": "_blank"},
             )
         ]
+
+
+def glowing_circle_image(url: str, *, height: Optional[str] = None) -> Element:
+    return Element(
+        "img",
+        attrs={
+            "src": url,
+            "class": "glowing-circle" if not mq_mobile.matches else "",
+        },
+        styles=[Style(border_radius="100%", height=height or "auto")],
+    )
+
+
+def image(url: str) -> Element:
+    return Element("img", attrs={"src": url}, styles=[centerx])
+
+
+def dialog_text(text: Any) -> Element:
+    return Element(
+        "p",
+        lambda: [Text(text)],
+        styles=[
+            Style(font_family="Schoolbell", font_size="1.5rem", margin="20px auto")
+        ],
+    )
+
+
+def user_action(onclick: Any, text: Any, *, router: bool = False) -> Element:
+    styles = [
+        Style(
+            font_size="1.3rem",
+            font_family="Syne Mono",
+            text_decoration="underline" if mq_mobile.matches else "none",
+        )
+    ]
+    attrs = {"class": "glowing" if not mq_mobile.matches else ""}
+
+    if router:
+        return RouterLink(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
+
+    return Button(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
