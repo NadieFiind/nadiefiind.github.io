@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>A PyFyre App</title>
+		<title>Nadie Fiind</title>
 		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 		
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Poppins&family=Schoolbell&family=Syne+Mono&display=swap"
+		/>
 		
+		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.7/brython.min.js" defer="defer"></script>
 		<script src="/src.brython.js" defer="defer"></script>
 		<script type="text/python">
@@ -19,8 +26,8 @@
 		<script src="/modules.brython.js" defer="defer"></script>
 		<link rel="stylesheet" href="/style.css" />
 	</head>
-	<body onload="brython({'debug': 0, 'cache': 1})">
+	<body class="m-0 bg-black text-white" onload="brython({'debug': 0, 'cache': 1})">
 		<noscript>Warning: JavaScript is not enabled.</noscript>
-		<div id="root"><div><h1 style="font-family: Sans">Welcome to PyFyre 🐍🔥</h1><p>Get started by modifying the <code>src/index.py</code>.</p><p>Learn PyFyre by reading the <a href="https://pyfyre-docs.netlify.app/">documentation</a>. It is also advisable to learn <a href="https://www.brython.info/">Brython</a> alongside PyFyre as it is built on top of Brython.</p><h2>Deployment</h2><p>Run <code>pyfyre build</code>. The build files are saved in the <code>build</code> directory so you can just serve or deploy that directory to the web.</p><h2>Links</h2><ul><li><a href="https://pypi.org/project/pyfyre">PyPI</a></li><li><a href="https://github.com/pyfyre/pyfyre">Repository</a></li><li><a href="https://pyfyre-docs.netlify.app">Documentation</a></li><li><a href="https://www.facebook.com/pyfyreframework">Facebook Page</a></li><li><a href="https://discord.gg/YzEDuqhgZJ">Discord Server</a></li></ul></div></div>
+		<div id="root"><div><div style="width: 100vw; height: 100vh; position: fixed; z-index: -1000"><img src="/images/space_background.jpg" style="height: 100vh; opacity: 0.5"></img></div><main style="padding-top: 50px"><section style="position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw / 1.3); margin-bottom: 40px"><img src="/images/avatar.png" style="border-radius: 100%; height: calc(100vw / 1.3)"></img></section><header style="position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw / 1.3); margin-bottom: 40px"><div style="font-size: 3rem; white-space: nowrap; text-align: center; line-height: 2.5rem"><span style="font-size: 1.5rem; font-family: Syne Mono">Hello! It's</span><h1 style="font-wight: bold; font-family: Open Sans">Nadie Fiind</h1><span style="font-size: 1.5rem; font-family: monospace">(⁠~⁠￣⁠~⁠￣⁠)⁠~</span></div></header><section style="position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw / 1.3); margin-bottom: 40px"><div><img src="https://media.tenor.com/GttGPkMEhP0AAAAC/anime-what.gif"></img><p style="font-family: Schoolbell; font-size: 1.7rem; text-align: center; line-height: 2rem; margin: 20px auto"><a href="/about">Do you wanna know more about me?</a></p></div></section></main></div></div>
 	</body>
 </html>

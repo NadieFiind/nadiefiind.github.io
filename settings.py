@@ -1,5 +1,7 @@
 from typing import Dict, List, Any
 
+name = "Nadie Fiind"
+
 # When building your app, PyFyre creates HTML files based on these routes,
 # so that when a user visits your website,
 # the corresponding page of the route is returned.
@@ -16,18 +18,23 @@ from typing import Dict, List, Any
 #
 # Example:
 # {
-# 	"/": {
-# 		"title": "A PyFyre App",
-# 		"icon": "/favicon.ico",
-# 		"head": ['<link rel="stylesheet" href="/style.css" />']
-# 	}
+#   "/": {
+#       "title": "A PyFyre App",
+#       "icon": "/favicon.ico",
+#       "head": ['<link rel="stylesheet" href="/style.css" />']
+#   }
 # }
 ROUTES: Dict[str, Dict[str, Any]] = {
     "/": {
-        "title": "A PyFyre App",
+        "title": name,
         "icon": "/favicon.ico",
         "head": ['<link rel="stylesheet" href="/style.css" />'],
-    }
+    },
+    "/about": {
+        "title": f"{name} | About",
+        "icon": "/favicon.ico",
+        "head": ['<link rel="stylesheet" href="/style.css" />'],
+    },
 }
 
 # When building your app, PyFyre makes your CPython packages installed by pip
@@ -39,8 +46,8 @@ ROUTES: Dict[str, Dict[str, Any]] = {
 #
 # Example:
 # [
-# 	"text_generator",
-# 	"random_string",
-# 	"url64"
+#   "text_generator",
+#   "random_string",
+#   "url64"
 # ]
 PYTHON_DEPENDENCIES: List[str] = []

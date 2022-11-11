@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>{title}</title>
+		<title>Nadie Fiind | About</title>
 		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 		
-		<link rel="icon" href="{icon}" />
+		<link rel="icon" href="/favicon.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
 		<link
@@ -19,14 +19,15 @@
 		<script src="/src.brython.js" defer="defer"></script>
 		<script type="text/python">
 			import pyfyre
-			pyfyre.PRODUCTION = {prod_env}
+			pyfyre.PRODUCTION = True
 			import index
 		</script>
 		
-		{head}
+		<script src="/modules.brython.js" defer="defer"></script>
+		<link rel="stylesheet" href="/style.css" />
 	</head>
-	<body class="m-0 bg-black text-white" onload="brython({brython_options})">
+	<body class="m-0 bg-black text-white" onload="brython({'debug': 0, 'cache': 1})">
 		<noscript>Warning: JavaScript is not enabled.</noscript>
-		<div id="root">{body}</div>
+		<div id="root">No route to render.</div>
 	</body>
 </html>
