@@ -1,7 +1,7 @@
 from typing import Any, Optional
 from pyfyre import Style
 from pyfyre.nodes import *
-from styles import mq_mobile, centerx, debug
+from styles import mq_mobile, centerx, centery, debug
 
 
 class Background(Widget):
@@ -70,18 +70,25 @@ class SocMedLink(Widget):
     def __init__(self, name: str, url: str, **kwargs: Any) -> None:
         self.name = name
         self.url = url
-        super().__init__(styles=[Style(font_size="2.5rem", margin="10px")], **kwargs)
+        super().__init__(styles=[Style(font_size="2.5rem", margin="0 10px")], **kwargs)
 
     def build(self) -> list[Node]:
-        return [
-            Link(
-                self.url,
-                lambda: [
-                    Element("i", attrs={"class": f"fa-brands fa-{self.name.lower()}"})
-                ],
-                attrs={"target": "_blank"},
-            )
-        ]
+        def icon() -> Element:
+            if self.name.lower() == "email":
+                return Element("i", attrs={"class": "fa-solid fa-envelope"})
+            elif self.name.lower() == "hoyolab":
+                return Element(
+                    "img",
+                    attrs={
+                        "src": "https://cdn.discordapp.com/attachments/10313797"
+                        "67674556436/1040654731049181285/hoyolab.png"
+                    },
+                    styles=[centery, Style(height="2.5rem")],
+                )
+
+            return Element("i", attrs={"class": f"fa-brands fa-{self.name.lower()}"})
+
+        return [Link(self.url, lambda: [icon()], attrs={"target": "_blank"})]
 
 
 def glowing_circle_image(url: str, *, height: Optional[str] = None) -> Element:

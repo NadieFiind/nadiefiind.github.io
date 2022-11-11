@@ -49,14 +49,25 @@ class Home(MainSection):  # type: ignore[misc]
                 styles=[Style(white_space="nowrap", line_height="2.5rem")],
             ),
             Section(
+                SocMedLink("Email", "mailto:nadiefiind@gmail.com"),
                 SocMedLink("Discord", "https://discord.com/users/459745032811839500"),
                 SocMedLink("GitHub", "https://github.com/NadieFiind"),
-                SocMedLink("Twitter", "https://twitter.com/NadieFiind"),
+                SocMedLink(
+                    "HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"
+                ),
                 SocMedLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
+                SocMedLink("Twitter", "https://twitter.com/NadieFiind"),
+                SocMedLink(
+                    "Spotify",
+                    "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",
+                ),
+                SocMedLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
+                SocMedLink("YouTube", "https://www.youtube.com/@nadiefiind"),
+                SocMedLink("Twitch", "https://www.twitch.tv/nadiefiind"),
                 styles=[
                     Style(
                         display="flex",
-                        justify_content="space-between",
+                        justify_content="space-around",
                         flex_wrap="wrap",
                     )
                 ],
