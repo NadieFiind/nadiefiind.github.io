@@ -5,7 +5,6 @@ from widgets import (
     Section,
     MainSection,
     SocMedLink,
-    glowing_circle_image,
     image,
     user_action,
 )
@@ -17,9 +16,17 @@ class Home(MainSection):  # type: ignore[misc]
 
         return [
             Section(
-                glowing_circle_image(
-                    "/images/avatar.png",
-                    height="calc(100vw / 1.3)" if mq_mobile.matches else "200px",
+                Element(
+                    "img",
+                    attrs={"src": "/images/avatar.png"},
+                    styles=[
+                        Style(
+                            border_radius="100%",
+                            height="calc(100vw / 1.3)"
+                            if mq_mobile.matches
+                            else "200px",
+                        )
+                    ],
                 )
             ),
             Section(

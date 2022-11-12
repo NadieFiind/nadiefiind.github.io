@@ -1,8 +1,56 @@
 from browser import document, timer
 from typing import Any, Optional
-from pyfyre import Style
+from pyfyre import Style, State
 from pyfyre.nodes import *
 from styles import mq_mobile, centerx, centery, debug, head_style
+
+nav_is_opened = State[bool](False)
+
+
+class Nav(Widget):
+    def __init__(self) -> None:
+        super().__init__(
+            styles=[
+                Style(
+                    width="100%",
+                    position="fixed",
+                    z_index="10000",
+                    top="0",
+                    background_color="#0009",
+                    transition="ease 0.5s",
+                    padding_left="20px",
+                )
+            ],
+            states=[nav_is_opened],
+        )
+
+    def build(self) -> list[Node]:
+        if nav_is_opened.value:
+            self.style.update(right="0")
+        else:
+            self.style.update(right="-100%")
+
+        return [
+            Button(
+                lambda ev: nav_is_opened.set_value(not nav_is_opened.value),
+                styles=[
+                    Style(
+                        position="fixed",
+                        border_radius="100%",
+                        width="50px",
+                        height="50px",
+                        top="7.5px",
+                        right="7.5px",
+                        background_image="url(/images/avatar.png)",
+                        background_size="cover",
+                    ),
+                ],
+            ),
+            user_action("/", "Home", router=True),
+            user_action("/about", "About", router=True),
+            user_action("/skills", "Skills", router=True),
+            user_action("/projects", "Projects", router=True),
+        ]
 
 
 class Background(Widget):
@@ -118,17 +166,6 @@ class SocMedLink(Widget):
         return [Link(self.url, lambda: [icon()], attrs={"target": "_blank"})]
 
 
-def glowing_circle_image(url: str, *, height: Optional[str] = None) -> Element:
-    return Element(
-        "img",
-        attrs={
-            "src": url,
-            "class": "glowing-circle" if not mq_mobile.matches else "",
-        },
-        styles=[Style(border_radius="100%", height=height or "auto")],
-    )
-
-
 def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Element:
     children: list[Node] = []
     children.append(Element("img", attrs={"src": url}, styles=[Style(width="100%")]))
@@ -170,16 +207,15 @@ def user_action(onclick: Any, text: Any, *, router: bool = False) -> Element:
         Style(
             font_size="1.3rem",
             font_family="Syne Mono",
-            text_decoration="underline" if mq_mobile.matches else "none",
+            text_decoration="underline",
         )
     ]
-    attrs = {"class": "glowing" if not mq_mobile.matches else ""}
     child: Element
 
     if router:
-        child = RouterLink(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
+        child = RouterLink(onclick, lambda: [Text(text)], styles=styles)
     else:
-        child = Button(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
+        child = Button(onclick, lambda: [Text(text)], styles=styles)
 
     return Element(
         "div",
