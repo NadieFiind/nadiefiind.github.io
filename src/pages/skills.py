@@ -40,6 +40,11 @@ class Skills(MainSection):  # type: ignore[misc]
                     ],
                     title="Summary",
                 ),
+                user_action(
+                    "/projects",
+                    "Show me the projects that you've worked on.",
+                    router=True,
+                ),
                 user_action(show_true_skills, "... That's it?"),
             ),
         ]
@@ -132,6 +137,11 @@ class Skills(MainSection):  # type: ignore[misc]
                                 justify_content="space-around",
                             )
                         ],
+                    ),
+                    user_action(
+                        "/projects",
+                        "Show me the projects that you've worked on.",
+                        router=True,
                     ),
                 )
             )

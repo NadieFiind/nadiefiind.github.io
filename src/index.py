@@ -1,9 +1,7 @@
 from pyfyre import render
 from pyfyre.nodes import *
 from widgets import Background
-from home import Home
-from about import About
-from skills import Skills
+from pages import Home, About, Skills, Projects
 
 
 class HomePage(Widget):
@@ -21,10 +19,16 @@ class SkillsPage(Widget):
         return [Background(), Skills()]
 
 
+class ProjectsPage(Widget):
+    def build(self) -> list[Node]:
+        return [Background(), Projects()]
+
+
 render(
     {
         "/": lambda: HomePage(),
         "/about": lambda: AboutPage(),
         "/skills": lambda: SkillsPage(),
+        "/projects": lambda: ProjectsPage(),
     }
 )

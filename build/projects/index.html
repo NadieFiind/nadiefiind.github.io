@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Projects | Nadie Fiind</title>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Poppins&family=Schoolbell&family=Syne+Mono&display=swap"
+		/>
+		
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://kit.fontawesome.com/727aa9b4da.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.7/brython.min.js" defer="defer"></script>
+		<script src="/src.brython.js" defer="defer"></script>
+		<script type="text/python">
+			import pyfyre
+			pyfyre.PRODUCTION = True
+			import index
+		</script>
+		
+		<script src="/modules.brython.js" defer="defer"></script>
+		<link rel="stylesheet" href="/style.css" />
+	</head>
+	<body class="m-0 bg-black text-white" onload="brython({'debug': 0, 'cache': 1})">
+		<noscript>Warning: JavaScript is not enabled.</noscript>
+		<div id="root"><div><div style="width: 100vw; height: 100vh; position: fixed; z-index: -1000; background-image: url(/images/background.jpg); background-size: cover; background-position: center; opacity: 0.5"><a target="_blank" href="https://twitter.com/adityar51253736/status/1584827745112317953?t=0518MJBJHHmQZxub23fPhA&s=19" style="position: absolute; bottom: 0; font-family: Syne Mono">Background Source</a></div><main style="padding-top: 50px"><header style="position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw / 1.3); margin-bottom: 40px; text-align: center"><h2 style="font-wight: bold; font-family: Open Sans; font-size: 3rem">My Projects</h2></header><section style="position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw / 1.3); margin-bottom: 40px; text-align: center"><div style="width: auto"><img src="https://avatars.githubusercontent.com/u/81043230?s=280&v=4" style="width: 100%"></img></div><h3 style="font-wight: bold; font-family: Open Sans; font-size: 2rem; margin: 20px auto">PyFyre</h3><p style="font-family: Sans; font-size: 1.3rem; margin: 20px auto">An open-source Python web frontend framework for building reactive web user interfaces.</p><div><a target="_blank" href="https://pypi.org/project/pyfyre" style="text-decoration: underline; font-size: 1.2rem; font-family: Syne Mono">PyPI</a></div><div><a target="_blank" href="https://github.com/pyfyre/pyfyre" style="text-decoration: underline; font-size: 1.2rem; font-family: Syne Mono">Repository</a></div><div><a target="_blank" href="https://pyfyre-docs.netlify.app" style="text-decoration: underline; font-size: 1.2rem; font-family: Syne Mono">Documentation</a></div><div><a target="_blank" href="https://www.facebook.com/pyfyreframework" style="text-decoration: underline; font-size: 1.2rem; font-family: Syne Mono">Facebook Page</a></div><div><a target="_blank" href="https://discord.gg/YzEDuqhgZJ" style="text-decoration: underline; font-size: 1.2rem; font-family: Syne Mono">Discord Server</a></div></section></main></div></div>
+		<div class="huge-toast"></div>
+	</body>
+</html>

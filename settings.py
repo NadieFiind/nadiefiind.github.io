@@ -40,6 +40,11 @@ ROUTES: Dict[str, Dict[str, Any]] = {
         "icon": "/favicon.ico",
         "head": ['<link rel="stylesheet" href="/style.css" />'],
     },
+    "/projects": {
+        "title": f"Projects | {name}",
+        "icon": "/favicon.ico",
+        "head": ['<link rel="stylesheet" href="/style.css" />'],
+    },
 }
 
 # When building your app, PyFyre makes your CPython packages installed by pip

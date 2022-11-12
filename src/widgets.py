@@ -28,7 +28,9 @@ class Background(Widget):
                 "https://twitter.com/adityar51253736/status/1584827745112317953"
                 "?t=0518MJBJHHmQZxub23fPhA&s=19",
                 lambda: [Text("Background Source")],
-                styles=[Style(position="absolute", bottom="0")],
+                styles=[
+                    Style(position="absolute", bottom="0", font_family="Syne Mono")
+                ],
                 attrs={"target": "_blank"},
             )
         ]
@@ -257,3 +259,23 @@ def huge_toast(message: str) -> None:
         el.classList.add("active")
 
     _huge_toast_timeout = timer.set_timeout(lambda: el.classList.remove("active"), 100)
+
+
+def external_link(url: str, text: Any) -> Element:
+    return Element(
+        "div",
+        lambda: [
+            Link(
+                url,
+                lambda: [Text(text)],
+                styles=[
+                    Style(
+                        text_decoration="underline",
+                        font_size="1.2rem",
+                        font_family="Syne Mono",
+                    )
+                ],
+                attrs={"target": "_blank"},
+            )
+        ],
+    )
