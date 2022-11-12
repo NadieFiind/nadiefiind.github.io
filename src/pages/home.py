@@ -1,32 +1,20 @@
-from pyfyre import Style, State
+from pyfyre import Style
 from pyfyre.nodes import *
-from styles import mq_mobile, head_style
-from widgets import (
-    Section,
-    MainSection,
-    SocMedLink,
-    image,
-    user_action,
-)
+from globals.states import show_about_link_on_home_page as show_about_link
+from globals.styles import title_style, center_x
+from components.sections import MainSection, Section
+from components.clickables import AccountLink, RouterButton, ActionButton
+from components.contents import image
 
 
-class Home(MainSection):  # type: ignore[misc]
+class Home(MainSection):
     def build(self) -> list[Node]:
-        show_about_link = State[bool](False)
-
         return [
             Section(
                 Element(
                     "img",
                     attrs={"src": "/images/avatar.png"},
-                    styles=[
-                        Style(
-                            border_radius="100%",
-                            height="calc(100vw / 1.3)"
-                            if mq_mobile.matches
-                            else "200px",
-                        )
-                    ],
+                    styles=[center_x, Style(border_radius="100%")],
                 )
             ),
             Section(
@@ -38,7 +26,7 @@ class Home(MainSection):  # type: ignore[misc]
                 Element(
                     "h1",
                     lambda: [Text("Nadie Fiind")],
-                    styles=[head_style],
+                    styles=[title_style],
                 ),
                 Element(
                     "span",
@@ -48,7 +36,7 @@ class Home(MainSection):  # type: ignore[misc]
                             font_size="1.5rem",
                             font_family="monospace",
                             position="relative",
-                            top="8px",
+                            top="9px",
                         )
                     ],
                 ),
@@ -56,21 +44,21 @@ class Home(MainSection):  # type: ignore[misc]
                 styles=[Style(white_space="nowrap", line_height="2.5rem")],
             ),
             Section(
-                SocMedLink("Email", "mailto:nadiefiind@gmail.com"),
-                SocMedLink("Discord", "https://discord.com/users/459745032811839500"),
-                SocMedLink("GitHub", "https://github.com/NadieFiind"),
-                SocMedLink(
+                AccountLink("Email", "mailto:nadiefiind@gmail.com"),
+                AccountLink("Discord", "https://discord.com/users/459745032811839500"),
+                AccountLink("GitHub", "https://github.com/NadieFiind"),
+                AccountLink(
                     "HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"
                 ),
-                SocMedLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
-                SocMedLink("Twitter", "https://twitter.com/NadieFiind"),
-                SocMedLink(
+                AccountLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
+                AccountLink("Twitter", "https://twitter.com/NadieFiind"),
+                AccountLink(
                     "Spotify",
                     "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",
                 ),
-                SocMedLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
-                SocMedLink("YouTube", "https://www.youtube.com/@nadiefiind"),
-                SocMedLink("Twitch", "https://www.twitch.tv/nadiefiind"),
+                AccountLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
+                AccountLink("YouTube", "https://www.youtube.com/@nadiefiind"),
+                AccountLink("Twitch", "https://www.twitch.tv/nadiefiind"),
                 styles=[
                     Style(
                         display="flex",
@@ -95,9 +83,9 @@ class Home(MainSection):  # type: ignore[misc]
                             ],
                             styles=[Style(margin_bottom="10px", display="block")],
                         ),
-                        user_action(lambda ev: show_about_link.set_value(True), "Yes!")
+                        ActionButton(lambda ev: show_about_link.set_value(True), "Yes!")
                         if not show_about_link.value
-                        else user_action("/about", "...", router=True),
+                        else RouterButton("...", "/about"),
                     ],
                     styles=[
                         Style(
@@ -107,7 +95,7 @@ class Home(MainSection):  # type: ignore[misc]
                             margin="20px auto",
                         )
                     ],
+                    states=[show_about_link],
                 ),
-                states=[show_about_link],
             ),
         ]

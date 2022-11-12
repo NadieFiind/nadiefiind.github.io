@@ -1,18 +1,13 @@
 from pyfyre.nodes import *
-from widgets import (
-    Section,
-    MainSection,
-    dialog_text,
-    image,
-    user_action,
-    HeaderSection,
-)
+from components.sections import MainSection, Section, PageTitle
+from components.clickables import RouterButton
+from components.contents import image, dialog_text
 
 
-class About(MainSection):  # type: ignore[misc]
+class About(MainSection):
     def build(self) -> list[Node]:
         return [
-            HeaderSection("About Me"),
+            PageTitle("About Me"),
             Section(
                 image(
                     "https://media.tenor.com/WbqsQXRTsawAAAAC"
@@ -24,7 +19,7 @@ class About(MainSection):  # type: ignore[misc]
                     "Currently (hatefully) studying as a computer science student."
                 ),
                 dialog_text("That's all I want to say for now (⁠~⁠￣⁠~⁠￣⁠)⁠~"),
-                user_action("/skills", "I want to see your skills.", router=True),
-                user_action("/", "You're boring. Take me back.", router=True),
+                RouterButton("I want to see your skills.", "/skills"),
+                RouterButton("You're boring. Take me back.", "/"),
             ),
         ]

@@ -1,34 +1,21 @@
+from typing import Callable
 from pyfyre import render
 from pyfyre.nodes import *
-from widgets import Background, Nav
 from pages import Home, About, Skills, Projects
+from components import Background, Nav, SurpriseMessage
 
 
-class HomePage(Widget):
-    def build(self) -> list[Node]:
-        return [Background(), Home(), Nav()]
-
-
-class AboutPage(Widget):
-    def build(self) -> list[Node]:
-        return [Background(), About(), Nav()]
-
-
-class SkillsPage(Widget):
-    def build(self) -> list[Node]:
-        return [Background(), Skills(), Nav()]
-
-
-class ProjectsPage(Widget):
-    def build(self) -> list[Node]:
-        return [Background(), Projects(), Nav()]
+def page_builder(main: Element) -> Callable[[], Element]:
+    return lambda: Element(
+        "div", lambda: [Background(), main, Nav(), SurpriseMessage()]
+    )
 
 
 render(
     {
-        "/": lambda: HomePage(),
-        "/about": lambda: AboutPage(),
-        "/skills": lambda: SkillsPage(),
-        "/projects": lambda: ProjectsPage(),
+        "/": page_builder(Home()),
+        "/about": page_builder(About()),
+        "/skills": page_builder(Skills()),
+        "/projects": page_builder(Projects()),
     }
 )

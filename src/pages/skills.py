@@ -1,20 +1,13 @@
 from browser import DOMEvent, document
-from pyfyre import State, Style
+from pyfyre import Style, State
 from pyfyre.nodes import *
-from widgets import (
-    Section,
-    MainSection,
-    image,
-    HeaderSection,
-    title,
-    dialog_text,
-    user_action,
-    item_list,
-    huge_toast,
-)
+from components import SurpriseMessage
+from components.sections import MainSection, Section, PageTitle, title
+from components.clickables import RouterButton, ActionButton
+from components.contents import image, item_list, dialog_text
 
 
-class Skills(MainSection):  # type: ignore[misc]
+class Skills(MainSection):
     def __init__(self) -> None:
         self.show_true_skills = State[bool](False)
         super().__init__(states=[self.show_true_skills])
@@ -22,11 +15,11 @@ class Skills(MainSection):  # type: ignore[misc]
     def build(self) -> list[Node]:
         def show_true_skills(event: DOMEvent) -> None:
             self.show_true_skills.set_value(True)
-            huge_toast("nope")
+            SurpriseMessage.show("nope")
             document.select_one("#real-skills").scrollIntoView({"behavior": "smooth"})
 
         children = [
-            HeaderSection("My Skills 😎"),
+            PageTitle("My Skills"),
             Section(
                 image("https://media.tenor.com/-q4cAjceIqkAAAAC/hololive-calliope.gif"),
                 item_list(
@@ -40,12 +33,10 @@ class Skills(MainSection):  # type: ignore[misc]
                     ],
                     title="Summary",
                 ),
-                user_action(
-                    "/projects",
-                    "Show me the projects that you've worked on.",
-                    router=True,
+                RouterButton(
+                    "Show me the projects that you've worked on.", "/projects"
                 ),
-                user_action(show_true_skills, "... That's it?"),
+                ActionButton(show_true_skills, "... That's it?"),
             ),
         ]
 
@@ -138,10 +129,8 @@ class Skills(MainSection):  # type: ignore[misc]
                             )
                         ],
                     ),
-                    user_action(
-                        "/projects",
-                        "Show me the projects that you've worked on.",
-                        router=True,
+                    RouterButton(
+                        "Show me the projects that you've worked on.", "/projects"
                     ),
                 )
             )

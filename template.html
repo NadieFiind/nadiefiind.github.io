@@ -4,6 +4,7 @@
 		<title>{title}</title>
 		
 		<meta charset="utf-8" />
+		<meta name="robots" content="index, follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 		
 		<link rel="icon" href="{icon}" />
@@ -26,9 +27,8 @@
 		
 		{head}
 	</head>
-	<body class="m-0 bg-black text-white" onload="brython({brython_options})">
+	<body onload="brython({brython_options})">
 		<noscript>Warning: JavaScript is not enabled.</noscript>
 		<div id="root">{body}</div>
-		<div class="huge-toast"></div>
 	</body>
 </html>

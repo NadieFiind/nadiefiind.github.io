@@ -1,19 +1,13 @@
 from pyfyre.nodes import *
-from widgets import (
-    Section,
-    MainSection,
-    dialog_text,
-    image,
-    HeaderSection,
-    title,
-    external_link,
-)
+from components.sections import MainSection, Section, PageTitle, title
+from components.clickables import external_link
+from components.contents import image, dialog_text
 
 
-class Projects(MainSection):  # type: ignore[misc]
+class Projects(MainSection):
     def build(self) -> list[Node]:
         return [
-            HeaderSection("My Projects"),
+            PageTitle("My Projects"),
             Section(
                 image("https://avatars.githubusercontent.com/u/81043230?s=280&v=4"),
                 title("PyFyre"),
@@ -22,12 +16,12 @@ class Projects(MainSection):  # type: ignore[misc]
                     "building reactive web user interfaces.",
                     serious=True,
                 ),
-                external_link("https://pypi.org/project/pyfyre", "PyPI"),
-                external_link("https://github.com/pyfyre/pyfyre", "Repository"),
-                external_link("https://pyfyre-docs.netlify.app", "Documentation"),
+                external_link("PyPI", "https://pypi.org/project/pyfyre"),
+                external_link("Repository", "https://github.com/pyfyre/pyfyre"),
+                external_link("Documentation", "https://pyfyre-docs.netlify.app"),
                 external_link(
-                    "https://www.facebook.com/pyfyreframework", "Facebook Page"
+                    "Facebook Page", "https://www.facebook.com/pyfyreframework"
                 ),
-                external_link("https://discord.gg/YzEDuqhgZJ", "Discord Server"),
+                external_link("Discord Server", "https://discord.gg/YzEDuqhgZJ"),
             ),
         ]
