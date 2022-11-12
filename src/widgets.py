@@ -1,7 +1,8 @@
+from browser import document, timer
 from typing import Any, Optional
 from pyfyre import Style
 from pyfyre.nodes import *
-from styles import mq_mobile, centerx, centery, debug
+from styles import mq_mobile, centerx, centery, debug, head_style
 
 
 class Background(Widget):
@@ -28,14 +29,24 @@ class Background(Widget):
                 "?t=0518MJBJHHmQZxub23fPhA&s=19",
                 lambda: [Text("Background Source")],
                 styles=[Style(position="absolute", bottom="0")],
+                attrs={"target": "_blank"},
             )
         ]
 
 
 class MainSection(Widget):
-    def __init__(self) -> None:
+    def __init__(self, **kwargs: Any) -> None:
+        additional_states = kwargs.get("states")
+        if additional_states is None:
+            additional_states = []
+        else:
+            del kwargs["states"]
+
         super().__init__(
-            tag_name="main", states=[mq_mobile], styles=[Style(padding_top="50px")]
+            tag_name="main",
+            states=[mq_mobile] + additional_states,
+            styles=[Style(padding_top="50px")],
+            **kwargs,
         )
 
     def build(self) -> list[Node]:
@@ -69,6 +80,15 @@ class Section(Widget):
 
     def build(self) -> list[Node]:
         return [*self.views]
+
+
+class HeaderSection(Section):
+    def __init__(self, title: Any, **kwargs: Any) -> None:
+        super().__init__(
+            Element("h2", lambda: [Text(title)], styles=[head_style]),
+            tag_name="header",
+            **kwargs,
+        )
 
 
 class SocMedLink(Widget):
@@ -107,16 +127,38 @@ def glowing_circle_image(url: str, *, height: Optional[str] = None) -> Element:
     )
 
 
-def image(url: str) -> Element:
-    return Element("img", attrs={"src": url}, styles=[centerx])
+def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Element:
+    children: list[Node] = []
+    children.append(Element("img", attrs={"src": url}, styles=[Style(width="100%")]))
+
+    if label:
+        children.append(
+            Element(
+                "p",
+                lambda: [Text(label)],
+                styles=[
+                    head_style,
+                    Style(
+                        font_size="1rem",
+                        margin="10px auto 40px auto",
+                    ),
+                ],
+            )
+        )
+
+    return Element("div", lambda: children, styles=[Style(width=width)])
 
 
-def dialog_text(text: Any) -> Element:
+def dialog_text(text: Any, *, serious: bool = False) -> Element:
     return Element(
         "p",
         lambda: [Text(text)],
         styles=[
-            Style(font_family="Schoolbell", font_size="1.5rem", margin="20px auto")
+            Style(
+                font_family="Schoolbell" if not serious else "Sans",
+                font_size="1.5rem" if not serious else "1.3rem",
+                margin="20px auto",
+            )
         ],
     )
 
@@ -130,8 +172,88 @@ def user_action(onclick: Any, text: Any, *, router: bool = False) -> Element:
         )
     ]
     attrs = {"class": "glowing" if not mq_mobile.matches else ""}
+    child: Element
 
     if router:
-        return RouterLink(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
+        child = RouterLink(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
+    else:
+        child = Button(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
 
-    return Button(onclick, lambda: [Text(text)], styles=styles, attrs=attrs)
+    return Element(
+        "div",
+        lambda: [child],
+        styles=[Style(margin="20px auto")],
+    )
+
+
+def title(title: Any, **kwargs: Any) -> Element:
+    return Element(
+        "h3",
+        lambda: [Text(title)],
+        styles=[
+            head_style,
+            Style(
+                font_size="2rem",
+                margin="20px auto",
+            ),
+        ],
+        **kwargs,
+    )
+
+
+def item_list(items: list[Any], *, title: Optional[Any] = None) -> Element:
+    children: list[Node] = (
+        [
+            Element(
+                "p",
+                lambda: [Text(title)],
+                styles=[
+                    head_style,
+                    Style(
+                        font_size="1.5rem",
+                        margin="10px auto",
+                    ),
+                ],
+            )
+        ]
+        if title
+        else []
+    )
+    children += map(
+        lambda item: Element(
+            "li",
+            lambda: [Text(item)],
+            styles=[
+                Style(
+                    font_family="Poppins",
+                    font_size="1.2rem",
+                    list_style_type="circle",
+                    margin_bottom="5px",
+                )
+            ],
+        ),
+        items,
+    )
+
+    return Element(
+        "ul",
+        lambda: children,
+        styles=[Style(margin="20px auto", list_style_position="inside")],
+    )
+
+
+_huge_toast_timeout = None
+
+
+def huge_toast(message: str) -> None:
+    global _huge_toast_timeout
+
+    el = document.select_one(".huge-toast")
+    el.textContent = message
+
+    if el.classList.contains("active"):
+        timer.clear_timeout(_huge_toast_timeout)
+    else:
+        el.classList.add("active")
+
+    _huge_toast_timeout = timer.set_timeout(lambda: el.classList.remove("active"), 100)

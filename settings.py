@@ -31,7 +31,12 @@ ROUTES: Dict[str, Dict[str, Any]] = {
         "head": ['<link rel="stylesheet" href="/style.css" />'],
     },
     "/about": {
-        "title": f"{name} | About",
+        "title": f"About | {name}",
+        "icon": "/favicon.ico",
+        "head": ['<link rel="stylesheet" href="/style.css" />'],
+    },
+    "/skills": {
+        "title": f"Skills | {name}",
         "icon": "/favicon.ico",
         "head": ['<link rel="stylesheet" href="/style.css" />'],
     },

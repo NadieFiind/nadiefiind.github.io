@@ -1,15 +1,18 @@
 from pyfyre.nodes import *
-from widgets import Section, MainSection, dialog_text, image, user_action
-from styles import head_style
+from widgets import (
+    Section,
+    MainSection,
+    dialog_text,
+    image,
+    user_action,
+    HeaderSection,
+)
 
 
 class About(MainSection):  # type: ignore[misc]
     def build(self) -> list[Node]:
         return [
-            Section(
-                Element("h2", lambda: [Text("About Me")], styles=[head_style]),
-                tag_name="header",
-            ),
+            HeaderSection("About Me"),
             Section(
                 image(
                     "https://media.tenor.com/WbqsQXRTsawAAAAC"
@@ -21,6 +24,7 @@ class About(MainSection):  # type: ignore[misc]
                     "Currently (hatefully) studying as a computer science student."
                 ),
                 dialog_text("That's all I want to say for now (⁠~⁠￣⁠~⁠￣⁠)⁠~"),
-                user_action("/", "Take me back.", router=True),
+                user_action("/skills", "I want to see your skills.", router=True),
+                user_action("/", "You're boring. Take me back.", router=True),
             ),
         ]
