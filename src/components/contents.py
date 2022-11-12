@@ -1,7 +1,7 @@
 from typing import Any, Optional
 from pyfyre import Style
 from pyfyre.nodes import *
-from globals.styles import title_style
+from globals.styles import title_style, center_x
 
 
 def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Element:
@@ -23,7 +23,17 @@ def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Elem
             )
         )
 
-    return Element("div", lambda: children, styles=[Style(width=width)])
+    return Element(
+        "div",
+        lambda: children,
+        styles=[
+            center_x,
+            Style(
+                width=width,
+                max_width="300px",
+            ),
+        ],
+    )
 
 
 def dialog_text(text: Any, *, serious: bool = False) -> Element:

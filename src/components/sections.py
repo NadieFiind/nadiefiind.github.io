@@ -26,7 +26,12 @@ class Section(Widget):
         styles = [
             debug,
             center_x,
-            Style(width="calc(100vw / 1.3)", margin_bottom="40px", text_align="center"),
+            Style(
+                width="calc(100vw / 1.3)",
+                margin_bottom="40px",
+                text_align="center",
+                max_width="700px",
+            ),
         ]
         if kwargs.get("styles"):
             kwargs["styles"] += styles

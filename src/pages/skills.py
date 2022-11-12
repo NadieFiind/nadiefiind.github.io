@@ -126,6 +126,7 @@ class Skills(MainSection):
                                 display="flex",
                                 flex_wrap="wrap",
                                 justify_content="space-around",
+                                transform="translateX(-30%)",
                             )
                         ],
                     ),

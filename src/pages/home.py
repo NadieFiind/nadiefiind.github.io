@@ -14,7 +14,7 @@ class Home(MainSection):
                 Element(
                     "img",
                     attrs={"src": "/images/avatar.png"},
-                    styles=[center_x, Style(border_radius="100%")],
+                    styles=[center_x, Style(border_radius="100%", max_width="300px")],
                 )
             ),
             Section(

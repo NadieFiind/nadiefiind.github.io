@@ -39,7 +39,8 @@ class Nav(Widget):
                     top="0",
                     background_color="#0009",
                     transition="ease 0.5s",
-                    padding_left="20px",
+                    padding_right="50px",
+                    text_align="right",
                 )
             ],
             states=[nav_is_opened],
@@ -47,9 +48,9 @@ class Nav(Widget):
 
     def build(self) -> list[Node]:
         if nav_is_opened.value:
-            self.style.update(right="0")
+            self.style.update(left="0")
         else:
-            self.style.update(right="-100%")
+            self.style.update(left="-100%")
 
         return [
             Button(
@@ -80,9 +81,11 @@ class SurpriseMessage(Widget):
             styles=[
                 center_xy,
                 Style(
+                    top="40%",
                     position="fixed",
                     font_size="20vw",
                     z_index="200000",
+                    font_family="Schoolbell",
                 ),
             ],
             states=[surprise_message_states["is_active"]],
