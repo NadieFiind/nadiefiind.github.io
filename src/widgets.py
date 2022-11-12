@@ -13,16 +13,21 @@ class Background(Widget):
                     height="100vh",
                     position="fixed",
                     z_index="-1000",
+                    background_image="url(/images/background.jpg)",
+                    background_size="cover",
+                    background_position="center",
+                    opacity="0.5",
                 )
             ],
         )
 
     def build(self) -> list[Node]:
         return [
-            Element(
-                "img",
-                attrs={"src": "/images/space_background.jpg"},
-                styles=[Style(height="100vh", opacity="0.5")],
+            Link(
+                "https://twitter.com/adityar51253736/status/1584827745112317953"
+                "?t=0518MJBJHHmQZxub23fPhA&s=19",
+                lambda: [Text("Background Source")],
+                styles=[Style(position="absolute", bottom="0")],
             )
         ]
 

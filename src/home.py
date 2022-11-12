@@ -41,7 +41,7 @@ class Home(MainSection):  # type: ignore[misc]
                             font_size="1.5rem",
                             font_family="monospace",
                             position="relative",
-                            top="7px",
+                            top="8px",
                         )
                     ],
                 ),
