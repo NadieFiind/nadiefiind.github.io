@@ -25,22 +25,7 @@ class Background(Widget):
         )
 
     def build(self) -> list[Node]:
-        return [
-            Link(
-                "https://twitter.com/adityar51253736/status/1584827745112317953"
-                "?t=0518MJBJHHmQZxub23fPhA&s=19",
-                lambda: [Text("Background Source")],
-                styles=[
-                    Style(
-                        position="absolute",
-                        bottom="0",
-                        font_family="Syne Mono",
-                        z_index="10000",
-                    )
-                ],
-                attrs={"target": "_blank"},
-            )
-        ]
+        return []
 
 
 class Nav(Widget):
