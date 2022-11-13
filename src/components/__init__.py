@@ -1,9 +1,8 @@
 from typing import Any
 from browser import timer
-from pyfyre import Style
+from pyfyre import Style, State
 from pyfyre.nodes import *
 from globals.styles import center_xy
-from globals.states import nav_is_opened, surprise_message_states
 from components.clickables import RouterButton
 
 
@@ -30,6 +29,7 @@ class Background(Widget):
 
 class Nav(Widget):
     def __init__(self) -> None:
+        self.is_opened = State[bool](False)
         super().__init__(
             styles=[
                 Style(
@@ -43,18 +43,18 @@ class Nav(Widget):
                     text_align="right",
                 )
             ],
-            states=[nav_is_opened],
+            states=[self.is_opened],
         )
 
     def build(self) -> list[Node]:
-        if nav_is_opened.value:
+        if self.is_opened.value:
             self.style.update(left="0")
         else:
             self.style.update(left="-100%")
 
         return [
             Button(
-                lambda ev: nav_is_opened.set_value(not nav_is_opened.value),
+                lambda ev: self.is_opened.set_value(not self.is_opened.value),
                 styles=[
                     Style(
                         position="fixed",
@@ -77,6 +77,10 @@ class Nav(Widget):
 
 class SurpriseMessage(Widget):
     def __init__(self) -> None:
+        self.is_active = State[bool](False)
+        self.timeout = None
+        self.text = ""
+
         super().__init__(
             styles=[
                 center_xy,
@@ -88,11 +92,11 @@ class SurpriseMessage(Widget):
                     font_family="Schoolbell",
                 ),
             ],
-            states=[surprise_message_states["is_active"]],
+            states=[self.is_active],
         )
 
     def build(self) -> list[Node]:
-        if surprise_message_states["is_active"].value:
+        if self.is_active.value:
             self.style.update(
                 transition="none",
                 visibility="visible",
@@ -107,17 +111,14 @@ class SurpriseMessage(Widget):
                 transform="translate3d(-50%, -50%, 0) scale(0) rotate(-10deg)",
             )
 
-        return [Text(surprise_message_states["text"])]
+        return [Text(self.text)]
 
-    @staticmethod
-    def show(message: Any) -> None:
-        surprise_message_states["text"] = message
+    def show(self, message: Any) -> None:
+        self.text = message
 
-        if surprise_message_states["is_active"].value:
-            timer.clear_timeout(surprise_message_states["timeout"])
+        if self.is_active.value:
+            timer.clear_timeout(self.timeout)
         else:
-            surprise_message_states["is_active"].set_value(True)
+            self.is_active.set_value(True)
 
-        surprise_message_states["timeout"] = timer.set_timeout(
-            lambda: surprise_message_states["is_active"].set_value(False), 100
-        )
+        self.timeout = timer.set_timeout(lambda: self.is_active.set_value(False), 100)

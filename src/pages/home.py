@@ -1,6 +1,5 @@
-from pyfyre import Style
+from pyfyre import Style, State
 from pyfyre.nodes import *
-from globals.states import show_about_link_on_home_page as show_about_link
 from globals.styles import title_style, center_x
 from components.sections import MainSection, Section
 from components.clickables import AccountLink, RouterButton, ActionButton
@@ -9,6 +8,8 @@ from components.contents import image, dialog_text
 
 class Home(MainSection):
     def build(self) -> list[Node]:
+        show_about_link = State[bool](False)
+
         return [
             Section(
                 Element(

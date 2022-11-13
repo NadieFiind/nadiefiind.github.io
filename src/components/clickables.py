@@ -3,7 +3,6 @@ from browser import DOMEvent, window
 from pyfyre import Style
 from pyfyre.nodes import *
 from globals.styles import center_y
-from globals.states import show_about_link_on_home_page
 
 
 class ActionButton(Widget):
@@ -45,13 +44,11 @@ class RouterButton(Widget):
                     text_decoration="underline",
                 )
             ],
+            force_build=True,
         )
 
         def onclick(event: DOMEvent) -> None:
             window.scrollTo({"top": 0, "behavior": "smooth"})
-
-            if self.url == "/":
-                show_about_link_on_home_page.set_value(False)
 
         router.add_event_listener("click", onclick)
         return [router]

@@ -1,7 +1,7 @@
 from browser import DOMEvent, document
 from pyfyre import Style, State
 from pyfyre.nodes import *
-from components import SurpriseMessage
+from globals import surprise_message
 from components.sections import MainSection, Section, PageTitle, title
 from components.clickables import RouterButton, ActionButton
 from components.contents import image, item_list, dialog_text
@@ -15,7 +15,7 @@ class Skills(MainSection):
     def build(self) -> list[Node]:
         def show_true_skills(event: DOMEvent) -> None:
             self.show_true_skills.set_value(True)
-            SurpriseMessage.show("nope")
+            surprise_message.show("nope")
             document.select_one("#real-skills").scrollIntoView({"behavior": "smooth"})
 
         children = [

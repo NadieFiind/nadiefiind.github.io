@@ -1,19 +1,20 @@
-from typing import Any, Callable
+from typing import Type, Any, Callable
 from pyfyre import render, Style
 from pyfyre.nodes import *
 from pages import Home, About, Skills, Projects
-from components import Background, Nav, SurpriseMessage
+from globals import surprise_message, nav
+from components import Background
 
 
-def page_builder(main: Element) -> Callable[[Any], Element]:
+def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
     def route_builder(arg: Any) -> Element:
         return Element(
             "div",
             lambda: [
                 Background(),
-                main,
-                Nav(),
-                SurpriseMessage(),
+                main(),
+                nav,
+                surprise_message,
                 Link(
                     "https://twitter.com/adityar51253736/status/1584827745112317953"
                     "?t=0518MJBJHHmQZxub23fPhA&s=19",
@@ -38,9 +39,9 @@ def page_builder(main: Element) -> Callable[[Any], Element]:
 
 render(
     {
-        "/": page_builder(Home()),
-        "/about": page_builder(About()),
-        "/skills": page_builder(Skills()),
-        "/projects": page_builder(Projects()),
+        "/": page_builder(Home),
+        "/about": page_builder(About),
+        "/skills": page_builder(Skills),
+        "/projects": page_builder(Projects),
     }
 )
