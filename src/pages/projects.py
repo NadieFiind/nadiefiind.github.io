@@ -16,6 +16,11 @@ class Projects(MainSection):
                     "building reactive web user interfaces.",
                     serious=True,
                 ),
+                dialog_text(
+                    "This website is built using PyFyre itself. "
+                    "Click the links below for more information about PyFyre",
+                    serious=True,
+                ),
                 external_link("PyPI", "https://pypi.org/project/pyfyre"),
                 external_link("Repository", "https://github.com/pyfyre/pyfyre"),
                 external_link("Documentation", "https://pyfyre-docs.netlify.app"),

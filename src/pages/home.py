@@ -4,7 +4,7 @@ from globals.states import show_about_link_on_home_page as show_about_link
 from globals.styles import title_style, center_x
 from components.sections import MainSection, Section
 from components.clickables import AccountLink, RouterButton, ActionButton
-from components.contents import image
+from components.contents import image, dialog_text
 
 
 class Home(MainSection):
@@ -70,7 +70,7 @@ class Home(MainSection):
             Section(
                 image("https://media.tenor.com/GttGPkMEhP0AAAAC/anime-what.gif"),
                 Element(
-                    "p",
+                    "div",
                     lambda: [
                         Element(
                             "span",
@@ -96,6 +96,16 @@ class Home(MainSection):
                         )
                     ],
                     states=[show_about_link],
+                ),
+            ),
+            Section(
+                image(
+                    "https://media.tenor.com/qvDr2ujZowEAAAAC/dazai-chuuya-nakahara.gif"
+                ),
+                dialog_text(
+                    "You see... I'm really bad at designing. "
+                    "If you're a web designer, can you give me some advice?",
+                    serious=True,
                 ),
             ),
         ]
