@@ -33,10 +33,10 @@ class Skills(MainSection):
                     ],
                     title="Summary",
                 ),
+                ActionButton(show_true_skills, "... That's it?"),
                 RouterButton(
                     "Show me the projects that you've worked on.", "/projects"
                 ),
-                ActionButton(show_true_skills, "... That's it?"),
             ),
         ]
 

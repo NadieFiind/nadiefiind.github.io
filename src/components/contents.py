@@ -36,18 +36,19 @@ def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Elem
     )
 
 
-def dialog_text(text: Any, *, serious: bool = False) -> Element:
-    return Element(
-        "p",
-        lambda: [Text(text)],
-        styles=[
-            Style(
-                font_family="Schoolbell" if not serious else "Sans",
-                font_size="1.5rem" if not serious else "1.3rem",
-                margin="20px auto",
-            )
-        ],
+def dialog_text(text: Any, *, serious: bool = False, **kwargs: Any) -> Element:
+    style = Style(
+        font_family="Schoolbell" if not serious else "Sans",
+        font_size="1.5rem" if not serious else "1.3rem",
+        margin="20px auto",
     )
+
+    if kwargs.get("styles"):
+        kwargs["styles"].insert(0, style)
+    else:
+        kwargs["styles"] = [style]
+
+    return Element("p", lambda: [Text(text)], **kwargs)
 
 
 def item_list(items: list[Any], *, title: Optional[Any] = None) -> Element:

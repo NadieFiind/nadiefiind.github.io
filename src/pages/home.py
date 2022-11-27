@@ -2,7 +2,7 @@ from pyfyre import Style, State
 from pyfyre.nodes import *
 from globals.styles import title_style, center_x
 from components.sections import MainSection, Section
-from components.clickables import AccountLink, RouterButton, ActionButton
+from components.clickables import AccountLink, RouterButton, ActionButton, external_link
 from components.contents import image, dialog_text
 
 
@@ -100,13 +100,15 @@ class Home(MainSection):
                 ),
             ),
             Section(
-                image(
-                    "https://media.tenor.com/qvDr2ujZowEAAAAC/dazai-chuuya-nakahara.gif"
-                ),
+                image("https://media.tenor.com/7X32PSw9c_EAAAAM/mona-sin-mora.gif"),
+                dialog_text("Why is my wallet empty again??? ヽ(　￣д￣)ノ"),
                 dialog_text(
-                    "You see... I'm really bad at designing. "
-                    "If you're a web designer, can you give me some advice?",
-                    serious=True,
+                    "(I can make websites and other stuff)",
+                    styles=[Style(font_size="1.1rem", margin_bottom="20px")],
+                ),
+                external_link(
+                    "Hire!!",
+                    "https://mail.google.com/mail?view=cm&to=nadiefiind@gmail.com",
                 ),
             ),
         ]
