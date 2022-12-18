@@ -86,10 +86,19 @@ class AccountLink(Widget):
         return [Link(self.url, lambda: [icon()], attrs={"target": "_blank"})]
 
 
+def internal_link(text: Any, route: str) -> Element:
+    return RouterLink(
+        route,
+        lambda: [Text(text)],
+        styles=[Style(color="#8987f3", text_decoration="underline")],
+        attrs={"target": "_blank"},
+    )
+
+
 def external_link(text: Any, url: str) -> Element:
     return Link(
         url,
         lambda: [Text(text)],
-        styles=[Style(color="#8987f3")],
+        styles=[Style(color="#8987f3", text_decoration="underline")],
         attrs={"target": "_blank"},
     )

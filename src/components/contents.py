@@ -53,6 +53,19 @@ def dialog_text(text: Any, *, serious: bool = False, **kwargs: Any) -> Element:
     )
 
 
+def small_text(text: Any, **kwargs: Any) -> Element:
+    style = Style(font_family="Poppins", font_size="1rem")
+
+    if kwargs.get("styles"):
+        kwargs["styles"].insert(0, style)
+    else:
+        kwargs["styles"] = [style]
+
+    return Element(
+        "p", lambda: [text if isinstance(text, Element) else Text(text)], **kwargs
+    )
+
+
 def item_list(items: list[Any], *, title: Optional[Any] = None) -> Element:
     children: list[Node] = (
         [

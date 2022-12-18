@@ -11,6 +11,7 @@ def _route(title: str) -> Dict[str, Any]:
 
 ROUTES: Dict[str, Dict[str, Any]] = {
     "/": _route(""),
+    "/services": _route("Services"),
 }
 
 PYTHON_DEPENDENCIES: List[str] = []
