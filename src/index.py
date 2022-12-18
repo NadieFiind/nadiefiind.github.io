@@ -15,7 +15,7 @@ def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
                 Link(
                     "https://twitter.com/adityar51253736/status/1584827745112317953"
                     "?t=0518MJBJHHmQZxub23fPhA&s=19",
-                    lambda: [Text("Background Source")],
+                    lambda: [Text("Background by Aditya")],
                     styles=[
                         Style(
                             position="fixed",

@@ -39,7 +39,7 @@ def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Elem
 def dialog_text(text: Any, *, serious: bool = False, **kwargs: Any) -> Element:
     style = Style(
         font_family="Schoolbell" if not serious else "Sans",
-        font_size="1.5rem" if not serious else "1.3rem",
+        font_size="1.5rem" if not serious else "1.1rem",
         margin="20px auto",
     )
 
