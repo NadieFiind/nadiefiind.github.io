@@ -2,9 +2,9 @@ from typing import Any
 from browser import timer
 from pyfyre import Style, State
 from pyfyre.nodes import *
-from globals.styles import center_xy
-from components.clickables import RouterButton
 from settings import ROUTES
+from styles import center_xy
+from components.clickables import RouterButton
 
 
 class Background(Widget):

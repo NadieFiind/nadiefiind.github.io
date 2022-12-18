@@ -2,7 +2,7 @@ from typing import Any, Callable
 from browser import DOMEvent, window
 from pyfyre import Style
 from pyfyre.nodes import *
-from globals.styles import center_y
+from styles import center_y
 
 
 class ActionButton(Widget):

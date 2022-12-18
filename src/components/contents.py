@@ -1,7 +1,7 @@
 from typing import Any, Optional
 from pyfyre import Style
 from pyfyre.nodes import *
-from globals.styles import title_style, center_x
+from styles import title_style, center_x
 
 
 def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Element:

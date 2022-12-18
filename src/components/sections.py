@@ -2,7 +2,7 @@ from abc import ABC
 from typing import Any
 from pyfyre import Style
 from pyfyre.nodes import *
-from globals.styles import debug, center_x, title_style
+from styles import debug, center_x, title_style
 
 
 class MainSection(Widget, ABC):
