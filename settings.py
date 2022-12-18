@@ -1,26 +1,20 @@
 from typing import Dict, List, Any
 
+
+def _route(title: str) -> Dict[str, Any]:
+    return {
+        "title": f"{title} | Nadie Fiind" if title else "Nadie Fiind",
+        "icon": "/favicon.ico",
+        "head": ['<link rel="stylesheet" href="/style.css" />'],
+    }
+
+
 ROUTES: Dict[str, Dict[str, Any]] = {
-    "/": {
-        "title": "Nadie Fiind",
-        "icon": "/favicon.ico",
-        "head": ['<link rel="stylesheet" href="/style.css" />'],
-    },
-    "/about": {
-        "title": "About | Nadie Fiind",
-        "icon": "/favicon.ico",
-        "head": ['<link rel="stylesheet" href="/style.css" />'],
-    },
-    "/skills": {
-        "title": "Skills | Nadie Fiind",
-        "icon": "/favicon.ico",
-        "head": ['<link rel="stylesheet" href="/style.css" />'],
-    },
-    "/projects": {
-        "title": "Projects | Nadie Fiind",
-        "icon": "/favicon.ico",
-        "head": ['<link rel="stylesheet" href="/style.css" />'],
-    },
+    "/": _route(""),
+    "/about": _route("About"),
+    "/skills": _route("Skills"),
+    "/projects": _route("Projects"),
+    "/services": _route("Services"),
 }
 
 PYTHON_DEPENDENCIES: List[str] = []

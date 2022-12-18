@@ -4,6 +4,7 @@ from pyfyre import Style, State
 from pyfyre.nodes import *
 from globals.styles import center_xy
 from components.clickables import RouterButton
+from settings import ROUTES
 
 
 class Background(Widget):
@@ -68,10 +69,10 @@ class Nav(Widget):
                     ),
                 ],
             ),
-            RouterButton("Home", "/"),
-            RouterButton("About", "/about"),
-            RouterButton("Skills", "/skills"),
-            RouterButton("Projects", "/projects"),
+            *(
+                RouterButton(route[1:].capitalize() or "Home", route)
+                for route in ROUTES
+            ),
         ]
 
 

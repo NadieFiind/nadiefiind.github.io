@@ -1,9 +1,10 @@
 from typing import Type, Any, Callable
 from pyfyre import render, Style
 from pyfyre.nodes import *
-from pages import Home, About, Skills, Projects
+from pages import Home, About, Skills, Projects, Services
 from globals import surprise_message, nav
 from components import Background
+from settings import ROUTES
 
 
 def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
@@ -44,5 +45,6 @@ render(
         "/about": page_builder(About),
         "/skills": page_builder(Skills),
         "/projects": page_builder(Projects),
+        "/services": page_builder(Services),
     }
 )
