@@ -87,20 +87,9 @@ class AccountLink(Widget):
 
 
 def external_link(text: Any, url: str) -> Element:
-    return Element(
-        "div",
-        lambda: [
-            Link(
-                url,
-                lambda: [Text(text)],
-                styles=[
-                    Style(
-                        text_decoration="underline",
-                        font_size="1.2rem",
-                        font_family="Syne Mono",
-                    )
-                ],
-                attrs={"target": "_blank"},
-            )
-        ],
+    return Link(
+        url,
+        lambda: [Text(text)],
+        styles=[Style(color="#8987f3")],
+        attrs={"target": "_blank"},
     )

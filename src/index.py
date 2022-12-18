@@ -3,8 +3,8 @@ from pyfyre import render, Style
 from pyfyre.nodes import *
 from components import Background
 from components.sections import MainSection, Section
-from components.clickables import AccountLink
-from components.contents import image
+from components.clickables import AccountLink, external_link
+from components.contents import dialog_text
 from styles import title_style, center_x
 
 
@@ -68,6 +68,20 @@ class Home(MainSection):
                         flex_wrap="wrap",
                     )
                 ],
+            ),
+            Section(
+                dialog_text(
+                    Element(
+                        "span",
+                        lambda: [
+                            Text("I make "),
+                            external_link("games", "https://nadiefiind.itch.io"),
+                            Text(" and "),
+                            external_link("stuff", "https://github.com/NadieFiind"),
+                            Text("."),
+                        ],
+                    )
+                )
             ),
         ]
 

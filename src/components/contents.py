@@ -48,7 +48,9 @@ def dialog_text(text: Any, *, serious: bool = False, **kwargs: Any) -> Element:
     else:
         kwargs["styles"] = [style]
 
-    return Element("p", lambda: [Text(text)], **kwargs)
+    return Element(
+        "p", lambda: [text if isinstance(text, Element) else Text(text)], **kwargs
+    )
 
 
 def item_list(items: list[Any], *, title: Optional[Any] = None) -> Element:
