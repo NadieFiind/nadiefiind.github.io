@@ -48,6 +48,7 @@ class Home(MainSection):
                 AccountLink("Email", "mailto:nadiefiind@gmail.com"),
                 AccountLink("Discord", "https://discord.com/users/459745032811839500"),
                 AccountLink("GitHub", "https://github.com/NadieFiind"),
+                AccountLink("Itch-io", "https://nadiefiind.itch.io"),
                 AccountLink(
                     "HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"
                 ),
