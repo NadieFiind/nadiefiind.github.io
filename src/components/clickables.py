@@ -71,6 +71,8 @@ class AccountLink(Widget):
         def icon() -> Element:
             if self.name.lower() == "email":
                 return Element("i", attrs={"class": "fa-solid fa-envelope"})
+            elif self.name.lower() == "ko-fi":
+                return Element("i", attrs={"class": "fa-solid fa-mug-hot"})
             elif self.name.lower() == "hoyolab":
                 return Element(
                     "img",

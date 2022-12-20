@@ -14,6 +14,8 @@ def social_links() -> Element:
         AccountLink("Discord", "https://discord.com/users/459745032811839500"),
         AccountLink("GitHub", "https://github.com/NadieFiind"),
         AccountLink("Itch-io", "https://nadiefiind.itch.io"),
+        AccountLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
+        AccountLink("Ko-fi", "https://ko-fi.com/nadiefiind"),
         AccountLink("HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"),
         AccountLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
         AccountLink("Twitter", "https://twitter.com/NadieFiind"),
@@ -21,9 +23,6 @@ def social_links() -> Element:
             "Spotify",
             "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",
         ),
-        AccountLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
-        AccountLink("YouTube", "https://www.youtube.com/@nadiefiind"),
-        AccountLink("Twitch", "https://www.twitch.tv/nadiefiind"),
         styles=[
             Style(
                 display="flex",
