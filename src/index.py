@@ -20,6 +20,7 @@ def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
                         Style(
                             position="fixed",
                             bottom="0",
+                            right="5px",
                             font_family="Syne Mono",
                             opacity="0.5",
                             font_size="1rem",

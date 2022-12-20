@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>{title}</title>
-		
-		<meta charset="utf-8" />
-		<meta name="robots" content="index, follow" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
-		<meta name="author" content="Nadie Fiind" />
-		<meta name="copyright" content="NadieFiind" />
-		<meta name="description" content="My personal website." />
-		
-		<!-- https://ogp.me/ -->
-		<meta property="og:title" content="Nadie Fiind" />
-		<meta property="og:site_name" content="Nadie Fiind" />
-		<meta property="og:description" content="My personal website." />
-		<meta property="og:url" content="https://nadiefiind.github.io/" />
-		<meta property="og:image" content="https://nadiefiind.github.io/images/avatar.png" />
-		<meta property="og:image:alt" content="Nadie Fiind" />
-		<meta property="og:type" content="website" />
-		<meta property="og:locale" content="en_PH" />
-		
-		<!-- https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup -->
-		<meta name="twitter:title" content="Nadie Fiind" />
-		<meta name="twitter:site" content="Nadie Fiind" />
-		<meta name="twitter:description" content="My personal website." />
-		<meta name="twitter:image" content="https://nadiefiind.github.io/images/avatar.png" />
-		<meta name="twitter:image:alt" content="Nadie Fiind" />
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:creator" content="@NadieFiind" />
-		
-		<link rel="icon" href="{icon}" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Poppins&family=Schoolbell&family=Syne+Mono&display=swap"
-		/>
-		
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="https://kit.fontawesome.com/727aa9b4da.js" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.7/brython.min.js" defer="defer"></script>
-		<script src="/src.brython.js" defer="defer"></script>
-		<script type="text/python">
-			import pyfyre
-			pyfyre.PRODUCTION = {prod_env}
-			import index
-		</script>
-		
-		{head}
-	</head>
-	<body onload="brython({brython_options})">
-		<noscript>Warning: JavaScript is not enabled.</noscript>
-		<div id="root">{body}</div>
-	</body>
+    <head>
+        <title>{title}</title>
+
+        <meta charset="utf-8" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+        <meta name="author" content="Nadie Fiind" />
+        <meta name="copyright" content="NadieFiind" />
+        <meta name="description" content="My personal website." />
+
+        <!-- https://ogp.me/ -->
+        <meta property="og:title" content="Nadie Fiind" />
+        <meta property="og:site_name" content="Nadie Fiind" />
+        <meta property="og:description" content="My personal website." />
+        <meta property="og:url" content="https://nadiefiind.github.io/" />
+        <meta property="og:image" content="https://nadiefiind.github.io/images/avatar.png" />
+        <meta property="og:image:alt" content="Nadie Fiind" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_PH" />
+
+        <!-- https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup -->
+        <meta name="twitter:title" content="Nadie Fiind" />
+        <meta name="twitter:site" content="Nadie Fiind" />
+        <meta name="twitter:description" content="My personal website." />
+        <meta name="twitter:image" content="https://nadiefiind.github.io/images/avatar.png" />
+        <meta name="twitter:image:alt" content="Nadie Fiind" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@NadieFiind" />
+
+        <link rel="icon" href="{icon}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Poppins&family=Schoolbell&family=Syne+Mono&display=swap"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/727aa9b4da.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.7/brython.min.js" defer="defer"></script>
+        <script src="/src.brython.js" defer="defer"></script>
+        <script type="text/python">
+            import pyfyre
+            pyfyre.PRODUCTION = {prod_env}
+            import index
+        </script>
+
+        {head}
+    </head>
+    <body onload="brython({brython_options})">
+        <noscript>Warning: JavaScript is not enabled.</noscript>
+        <div id="root">{body}</div>
+
+        <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+        <script>/* eslint-disable */
+            kofiWidgetOverlay.draw("nadiefiind", {{
+                "type": "floating-chat",
+                "floating-chat.donateButton.text": "Support Me",
+                "floating-chat.donateButton.background-color": "#ffffff",
+                "floating-chat.donateButton.text-color": "#323842"
+            }});
+        </script>
+    </body>
 </html>
