@@ -58,15 +58,20 @@ class Home(MainSection):
                     )
                 ),
                 small_text(
+                    " Try them out (人ゝω・）",
+                    styles=[Style(margin_top="-20px")],
+                ),
+            ),
+            Section(
+                small_text(
                     Element(
-                        "span",
+                        "p",
                         lambda: [
                             Text("Do you want to commission me? Here are my "),
                             internal_link("services", "/services"),
                             Text("."),
                         ],
-                    ),
-                    styles=[Style(margin_top="-20px")],
+                    )
                 ),
             ),
         ]

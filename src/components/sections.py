@@ -34,7 +34,7 @@ class Section(Widget):
             ),
         ]
         if kwargs.get("styles"):
-            kwargs["styles"] += styles
+            kwargs["styles"] = styles + kwargs["styles"]
         else:
             kwargs["styles"] = styles
 
@@ -54,15 +54,16 @@ class PageTitle(Section):
 
 
 def title(text: Any, **kwargs: Any) -> Element:
-    return Element(
-        "h3",
-        lambda: [Text(text)],
-        styles=[
-            title_style,
-            Style(
-                font_size="2rem",
-                margin="20px auto",
-            ),
-        ],
-        **kwargs,
-    )
+    styles = [
+        title_style,
+        Style(
+            font_size="2rem",
+            margin="20px auto",
+        ),
+    ]
+    if kwargs.get("styles"):
+        kwargs["styles"] = styles + kwargs["styles"]
+    else:
+        kwargs["styles"] = styles
+
+    return Element("h3", lambda: [Text(text)], **kwargs)

@@ -9,6 +9,13 @@ body::-webkit-scrollbar {
 	display: none;  /* Safari and Chrome */
 }
 
+a {
+	transition: ease 0.3s;
+}
+a:hover {
+	text-shadow: 0 0 5px #8b72f2;
+}
+
 /*
 	Styling for [pyfyre.presets.loading.Loading].
 	Source: https://loading.io/css/

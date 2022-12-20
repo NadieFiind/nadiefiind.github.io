@@ -10,8 +10,6 @@ from components.clickables import RouterButton, AccountLink
 
 def social_links() -> Element:
     return Section(
-        AccountLink("Email", "mailto:nadiefiind@gmail.com"),
-        AccountLink("Discord", "https://discord.com/users/459745032811839500"),
         AccountLink("GitHub", "https://github.com/NadieFiind"),
         AccountLink("Itch-io", "https://nadiefiind.itch.io"),
         AccountLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
@@ -23,13 +21,7 @@ def social_links() -> Element:
             "Spotify",
             "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",
         ),
-        styles=[
-            Style(
-                display="flex",
-                justify_content="space-around",
-                flex_wrap="wrap",
-            )
-        ],
+        styles=[Style(display="flex", justify_content="center", flex_wrap="wrap")],
     )
 
 
