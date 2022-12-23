@@ -30,7 +30,6 @@ def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
                     attrs={"target": "_blank"},
                 ),
             ],
-            styles=[Style(padding_bottom="70px")],
         )
 
     return route_builder

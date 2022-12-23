@@ -108,7 +108,7 @@ class SurpriseMessage(Widget):
                     position="fixed",
                     font_size="20vw",
                     z_index="200000",
-                    font_family="Schoolbell",
+                    font_family="Syne Mono",
                 ),
             ],
             states=[self.is_active],

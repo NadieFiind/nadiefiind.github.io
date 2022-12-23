@@ -1,7 +1,7 @@
 from typing import Any, Optional
 from pyfyre import Style
 from pyfyre.nodes import *
-from styles import title_style, center_x
+from styles import title_style
 
 
 def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Element:
@@ -26,23 +26,12 @@ def image(url: str, *, width: str = "auto", label: Optional[Any] = None) -> Elem
     return Element(
         "div",
         lambda: children,
-        styles=[
-            center_x,
-            Style(
-                width=width,
-                max_width="300px",
-            ),
-        ],
+        styles=[Style(width=width)],
     )
 
 
-def dialog_text(text: Any, *, serious: bool = False, **kwargs: Any) -> Element:
-    style = Style(
-        font_family="Schoolbell" if not serious else "Sans",
-        font_size="1.5rem" if not serious else "1.1rem",
-        margin="20px auto",
-    )
-
+def strong_text(text: Any, **kwargs: Any) -> Element:
+    style = Style(font_family="Syne Mono", font_weight="bold", font_size="1.2rem")
     if kwargs.get("styles"):
         kwargs["styles"].insert(0, style)
     else:
@@ -53,7 +42,7 @@ def dialog_text(text: Any, *, serious: bool = False, **kwargs: Any) -> Element:
     )
 
 
-def small_text(text: Any, **kwargs: Any) -> Element:
+def text(text: Any, **kwargs: Any) -> Element:
     style = Style(font_family="Poppins", font_size="1rem")
 
     if kwargs.get("styles"):

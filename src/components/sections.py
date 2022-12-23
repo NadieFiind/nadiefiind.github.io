@@ -7,7 +7,7 @@ from styles import debug, center_x, title_style
 
 class MainSection(Widget, ABC):
     def __init__(self, **kwargs: Any) -> None:
-        style = Style(padding_top="50px")
+        style = Style()
         if kwargs.get("styles"):
             kwargs["styles"].append(style)
         else:
@@ -26,12 +26,7 @@ class Section(Widget):
         styles = [
             debug,
             center_x,
-            Style(
-                width="calc(100vw / 1.3)",
-                margin_bottom="40px",
-                text_align="center",
-                max_width="700px",
-            ),
+            Style(width="calc(100vw / 1.3)", text_align="center", max_width="700px"),
         ]
         if kwargs.get("styles"):
             kwargs["styles"] = styles + kwargs["styles"]
