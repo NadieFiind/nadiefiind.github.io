@@ -11,13 +11,16 @@ from components.contents import text
 
 def social_links() -> Element:
     return Section(
+        AccountLink("Gravatar", "https://en.gravatar.com/kylasimp"),
         AccountLink("GitHub", "https://github.com/NadieFiind"),
         AccountLink("Itch-io", "https://nadiefiind.itch.io"),
         AccountLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
+        AccountLink("Top-gg", "https://top.gg/user/363396908136988672"),
+        AccountLink("PyPI", "https://pypi.org/user/NadieFiind/"),
         AccountLink("Ko-fi", "https://ko-fi.com/nadiefiind"),
+        AccountLink("Twitter", "https://twitter.com/NadieFiind"),
         AccountLink("HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"),
         AccountLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
-        AccountLink("Twitter", "https://twitter.com/NadieFiind"),
         AccountLink(
             "Spotify",
             "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",

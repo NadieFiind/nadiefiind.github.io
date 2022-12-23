@@ -69,10 +69,23 @@ class AccountLink(Widget):
 
     def build(self) -> list[Node]:
         def icon() -> Element:
-            if self.name.lower() == "email":
+            if self.name.lower() == "gravatar":
+                return Element("i", attrs={"class": "fa-solid fa-user"})
+            elif self.name.lower() == "email":
                 return Element("i", attrs={"class": "fa-solid fa-envelope"})
             elif self.name.lower() == "ko-fi":
                 return Element("i", attrs={"class": "fa-solid fa-mug-hot"})
+            elif self.name.lower() == "pypi":
+                return Element("i", attrs={"class": "fa-brands fa-python"})
+            elif self.name.lower() == "top-gg":
+                return Element(
+                    "img",
+                    attrs={
+                        "src": "https://cdn.discordapp.com/attachments/"
+                        "1031379767674556436/1055756180078731325/34552786.png"
+                    },
+                    styles=[center_y, Style(width="2.5rem", filter="invert(100%)")],
+                )
             elif self.name.lower() == "hoyolab":
                 return Element(
                     "img",
