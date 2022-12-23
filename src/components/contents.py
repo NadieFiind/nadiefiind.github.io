@@ -51,7 +51,7 @@ def text(text: Any, **kwargs: Any) -> Element:
         kwargs["styles"] = [style]
 
     return Element(
-        "p", lambda: [text if isinstance(text, Element) else Text(text)], **kwargs
+        "span", lambda: [text if isinstance(text, Element) else Text(text)], **kwargs
     )
 
 

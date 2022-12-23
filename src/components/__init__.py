@@ -5,7 +5,8 @@ from pyfyre.nodes import *
 from settings import ROUTES
 from styles import center_xy
 from components.sections import Section
-from components.clickables import RouterButton, AccountLink
+from components.clickables import RouterButton, AccountLink, external_link
+from components.contents import text
 
 
 def social_links() -> Element:
@@ -20,6 +21,32 @@ def social_links() -> Element:
         AccountLink(
             "Spotify",
             "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",
+        ),
+        Element(
+            "div",
+            lambda: [
+                Element(
+                    "div",
+                    lambda: [
+                        text("Email "),
+                        external_link(
+                            "nadiefiind@gmail.com", "mailto:nadiefiind@gmail.com"
+                        ),
+                    ],
+                    styles=[Style(margin_left="10px", margin_right="10px")],
+                ),
+                Element(
+                    "div",
+                    lambda: [
+                        text("Discord "),
+                        external_link(
+                            "Nadie#5944", "https://discord.com/users/459745032811839500"
+                        ),
+                    ],
+                    styles=[Style(margin_left="10px", margin_right="10px")],
+                ),
+            ],
+            styles=[Style(width="100%", display="flex", justify_content="center")],
         ),
         styles=[Style(display="flex", justify_content="center", flex_wrap="wrap")],
     )

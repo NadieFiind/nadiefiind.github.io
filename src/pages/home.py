@@ -58,8 +58,8 @@ class Home(MainSection):
                                     Style(
                                         white_space="nowrap",
                                         line_height="2.5rem",
-                                        margin_top="40px",
-                                        margin_bottom="40px",
+                                        margin_top="30px",
+                                        margin_bottom="30px",
                                     )
                                 ],
                             ),
@@ -104,6 +104,7 @@ class Home(MainSection):
                                     ),
                                     text(" Try them out (人ゝω・）"),
                                     Element("br"),
+                                    Element("br"),
                                     text(
                                         "I am a self-taught programmer and an indie game developer."
                                     ),
@@ -112,7 +113,7 @@ class Home(MainSection):
                         ],
                         styles=[Style(display="flex", justify_content="center")],
                     ),
-                    Element("div", styles=[Style(height="40px")]),
+                    Element("div", styles=[Style(height="50px")]),
                     Section(
                         text(
                             Element(
