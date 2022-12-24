@@ -42,7 +42,11 @@ class Section(Widget):
 class PageTitle(Section):
     def __init__(self, title: Any, **kwargs: Any) -> None:
         super().__init__(
-            Element("h2", lambda: [Text(title)], styles=[title_style]),
+            Element(
+                "h2",
+                lambda: [Text(title)],
+                styles=[title_style, Style(margin_top="30px", margin_bottom="30px")],
+            ),
             tag_name="header",
             **kwargs,
         )

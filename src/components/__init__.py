@@ -68,6 +68,7 @@ class Background(Widget):
                     background_size="cover",
                     background_position="center",
                     opacity="0.5",
+                    top="0",
                 )
             ],
         )

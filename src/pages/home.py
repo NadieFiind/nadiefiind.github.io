@@ -4,7 +4,7 @@ from components import social_links
 from components.sections import MainSection, Section
 from components.clickables import external_link, internal_link
 from components.contents import strong_text, image, text
-from styles import title_style, center_x, center_xy
+from styles import title_style, center_x
 
 
 class Home(MainSection):
@@ -65,10 +65,12 @@ class Home(MainSection):
                             ),
                             social_links(),
                         ],
-                        styles=[center_xy],
+                        styles=[center_x],
                     )
                 ],
-                styles=[Style(height="100vh")],
+                styles=[
+                    Style(min_height="636px", padding_top="40px", padding_bottom="40px")
+                ],
             ),
             Element(
                 "div",
@@ -80,7 +82,6 @@ class Home(MainSection):
                                 "https://media.tenor.com/o-wNCEq_6f0AAAAd/pompo-the-cinephile-typing-fast.gif",
                                 width="300px",
                             ),
-                            Element("div", styles=[Style(width="40px")]),
                             Element(
                                 "div",
                                 lambda: [
@@ -109,9 +110,16 @@ class Home(MainSection):
                                         "I am a self-taught programmer and an indie game developer."
                                     ),
                                 ],
+                                styles=[Style(padding="20px 40px 0 40px")],
                             ),
                         ],
-                        styles=[Style(display="flex", justify_content="center")],
+                        styles=[
+                            Style(
+                                display="flex",
+                                justify_content="center",
+                                flex_wrap="wrap",
+                            )
+                        ],
                     ),
                     Element("div", styles=[Style(height="50px")]),
                     Section(
