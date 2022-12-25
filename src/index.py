@@ -1,7 +1,7 @@
 from typing import Type, Any, Callable
 from pyfyre import render, Style
 from pyfyre.nodes import *
-from components import Background
+from components import Background, crypto_addresses
 from pages import Home, Services
 
 
@@ -29,6 +29,7 @@ def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
                     ],
                     attrs={"target": "_blank"},
                 ),
+                *crypto_addresses(),
             ],
         )
 

@@ -4,7 +4,7 @@ from components import social_links
 from components.sections import MainSection, Section
 from components.clickables import external_link, internal_link
 from components.contents import strong_text, image, text
-from styles import title_style, center_x
+from styles import title_style, center_x, glossy
 
 
 class Home(MainSection):
@@ -135,13 +135,6 @@ class Home(MainSection):
                         ),
                     ),
                 ],
-                styles=[
-                    Style(
-                        background_color="rgba(0, 0, 0, 0.5)",
-                        backdrop_filter="blur(8px)",
-                        padding_top="50px",
-                        padding_bottom="50px",
-                    )
-                ],
+                styles=[glossy, Style(padding_top="50px", padding_bottom="50px")],
             ),
         ]

@@ -9,6 +9,10 @@ body::-webkit-scrollbar {
 	display: none;  /* Safari and Chrome */
 }
 
+code {
+	word-break: break-all;
+}
+
 a {
 	transition: ease 0.3s;
 }

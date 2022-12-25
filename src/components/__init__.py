@@ -1,12 +1,118 @@
-from typing import Any
-from browser import timer
+from typing import Any, Tuple
+from browser import timer, DOMEvent
 from pyfyre import Style, State
 from pyfyre.nodes import *
 from settings import ROUTES
-from styles import center_xy
+from styles import center_xy, glossy
 from components.sections import Section
 from components.clickables import RouterButton, AccountLink, external_link
 from components.contents import text
+
+
+def crypto_addresses() -> Tuple[Element, Element]:
+    s = Style(
+        position="fixed",
+        max_height="0",
+        z_index="10000",
+        padding="15px",
+        left="15px",
+        bottom="120px",
+        border_radius="10px",
+        background_color="white",
+        color="black",
+        overflow="hidden",
+        transition="ease 0.2s",
+        visibility="hidden",
+        opacity="0",
+    )
+
+    def toggle(event: DOMEvent) -> None:
+        if s["max_height"] == "100vh":
+            s["max_height"] = "0"
+            s["visibility"] = "hidden"
+            s["opacity"] = "0"
+        else:
+            s["max_height"] = "100vh"
+            s["visibility"] = "visible"
+            s["opacity"] = "1"
+
+    return (
+        Element(
+            "div",
+            lambda: [
+                Element(
+                    "p",
+                    lambda: [Text("Support me using cryptocurrency")],
+                    styles=[
+                        Style(
+                            font_family="Poppins",
+                            font_weight="bold",
+                            text_align="center",
+                            margin_bottom="10px",
+                        )
+                    ],
+                ),
+                Element(
+                    "div",
+                    lambda: [
+                        text("USDT (SOL) ", styles=[Style(font_weight="bold")]),
+                        Element(
+                            "code",
+                            lambda: [
+                                Text("51FHuj1NEKH2EyYNZmFbvdETRe27smyczp4fHQ13RAHJ")
+                            ],
+                        ),
+                    ],
+                    styles=[Style(font_size="0.9rem")],
+                ),
+                Element(
+                    "div",
+                    lambda: [
+                        text("BTC ", styles=[Style(font_weight="bold")]),
+                        Element(
+                            "code",
+                            lambda: [
+                                Text("bc1qyr3m2nx80pkt3fu6a2xevx6kaczpfmwkypztdq")
+                            ],
+                        ),
+                    ],
+                    styles=[Style(font_size="0.9rem")],
+                ),
+                Element(
+                    "div",
+                    lambda: [
+                        text("ETH ", styles=[Style(font_weight="bold")]),
+                        Element(
+                            "code",
+                            lambda: [
+                                Text("0x8CE6fcC10a0E84024972D99c5b72d12EF6D682b6")
+                            ],
+                        ),
+                    ],
+                    styles=[Style(font_size="0.9rem")],
+                ),
+            ],
+            styles=[glossy, s],
+        ),
+        Button(
+            toggle,
+            lambda: [
+                Element(
+                    "i",
+                    attrs={"class": "fa-brands fa-bitcoin"},
+                    styles=[Style(font_size="40px")],
+                )
+            ],
+            styles=[
+                Style(
+                    position="fixed",
+                    bottom="70px",
+                    left="15px",
+                    z_index="10001",
+                )
+            ],
+        ),
+    )
 
 
 def social_links() -> Element:

@@ -56,7 +56,7 @@ def title(text: Any, **kwargs: Any) -> Element:
     styles = [
         title_style,
         Style(
-            font_size="2rem",
+            font_size="1.5rem",
             margin="20px auto",
         ),
     ]

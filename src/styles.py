@@ -10,3 +10,4 @@ center_xy = Style(
     left="50%",
     transform="translate3d(-50%, -50%, 0)",
 )
+glossy = Style(background_color="rgba(0, 0, 0, 0.5)", backdrop_filter="blur(8px)")
