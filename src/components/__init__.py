@@ -118,19 +118,20 @@ def crypto_addresses() -> Tuple[Element, Element]:
 def social_links() -> Element:
     return Section(
         AccountLink("Gravatar", "https://en.gravatar.com/kylasimp"),
+        AccountLink("Ko-fi", "https://ko-fi.com/nadiefiind"),
         AccountLink("GitHub", "https://github.com/NadieFiind"),
         AccountLink("Itch-io", "https://nadiefiind.itch.io"),
         AccountLink("Steam", "https://steamcommunity.com/id/nadiefiind"),
         AccountLink("Top-gg", "https://top.gg/user/363396908136988672"),
         AccountLink("PyPI", "https://pypi.org/user/NadieFiind/"),
-        AccountLink("Ko-fi", "https://ko-fi.com/nadiefiind"),
         AccountLink("Twitter", "https://twitter.com/NadieFiind"),
-        AccountLink("HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"),
         AccountLink("Reddit", "https://www.reddit.com/user/NadieFiind"),
+        AccountLink("HoYoLAB", "https://www.hoyolab.com/accountCenter?id=114221687"),
         AccountLink(
             "Spotify",
             "https://open.spotify.com/user/r8fcyujc1i3b2th7p2nd1ut7x?si=3642ee5174e64cb5",
         ),
+        AccountLink("TraderSync", "https://shared.tradersync.com/nadiefiind"),
         Element(
             "div",
             lambda: [
@@ -157,7 +158,14 @@ def social_links() -> Element:
             ],
             styles=[Style(width="100%", display="flex", justify_content="center")],
         ),
-        styles=[Style(display="flex", justify_content="center", flex_wrap="wrap")],
+        styles=[
+            Style(
+                display="flex",
+                justify_content="center",
+                flex_wrap="wrap",
+                max_width="800px",
+            )
+        ],
     )
 
 

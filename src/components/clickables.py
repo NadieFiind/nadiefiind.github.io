@@ -68,16 +68,18 @@ class AccountLink(Widget):
         super().__init__(**kwargs)
 
     def build(self) -> list[Node]:
+        lname = self.name.lower()
+
         def icon() -> Element:
-            if self.name.lower() == "gravatar":
+            if lname == "gravatar":
                 return Element("i", attrs={"class": "fa-solid fa-user"})
-            elif self.name.lower() == "email":
+            elif lname == "email":
                 return Element("i", attrs={"class": "fa-solid fa-envelope"})
-            elif self.name.lower() == "ko-fi":
+            elif lname == "ko-fi":
                 return Element("i", attrs={"class": "fa-solid fa-mug-hot"})
-            elif self.name.lower() == "pypi":
+            elif lname == "pypi":
                 return Element("i", attrs={"class": "fa-brands fa-python"})
-            elif self.name.lower() == "top-gg":
+            elif lname == "top-gg":
                 return Element(
                     "img",
                     attrs={
@@ -86,7 +88,7 @@ class AccountLink(Widget):
                     },
                     styles=[center_y, Style(width="2.5rem", filter="invert(100%)")],
                 )
-            elif self.name.lower() == "hoyolab":
+            elif lname == "hoyolab":
                 return Element(
                     "img",
                     attrs={
@@ -95,8 +97,10 @@ class AccountLink(Widget):
                     },
                     styles=[center_y, Style(height="2.5rem")],
                 )
+            elif lname == "tradersync":
+                return Element("i", attrs={"class": "fa-solid fa-chart-column"})
 
-            return Element("i", attrs={"class": f"fa-brands fa-{self.name.lower()}"})
+            return Element("i", attrs={"class": f"fa-brands fa-{lname}"})
 
         return [Link(self.url, lambda: [icon()], attrs={"target": "_blank"})]
 
