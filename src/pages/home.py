@@ -121,19 +121,6 @@ class Home(MainSection):
                             )
                         ],
                     ),
-                    Element("div", styles=[Style(height="50px")]),
-                    Section(
-                        text(
-                            Element(
-                                "p",
-                                lambda: [
-                                    Text("Do you want to commission me? Here are my "),
-                                    internal_link("services", "/services"),
-                                    Text("."),
-                                ],
-                            )
-                        ),
-                    ),
                 ],
                 styles=[glossy, Style(padding_top="50px", padding_bottom="50px")],
             ),

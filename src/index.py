@@ -2,7 +2,7 @@ from typing import Type, Any, Callable
 from pyfyre import render, Style
 from pyfyre.nodes import *
 from components import Background, crypto_addresses
-from pages import Home, Services
+from pages import Home
 
 
 def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
@@ -36,9 +36,4 @@ def page_builder(main: Type[Widget]) -> Callable[[Any], Element]:
     return route_builder
 
 
-render(
-    {
-        "/": page_builder(Home),
-        "/services": page_builder(Services),
-    }
-)
+render({"/": page_builder(Home)})
